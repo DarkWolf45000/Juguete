@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Block
   - Saw
+  - Sword
+  - Helmet
   layers:
   - Default
   - TransparentFX
