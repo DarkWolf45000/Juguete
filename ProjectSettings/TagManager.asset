@@ -9,6 +9,7 @@ TagManager:
   - Saw
   - Sword
   - Helmet
+  - Shield
   layers:
   - Default
   - TransparentFX
