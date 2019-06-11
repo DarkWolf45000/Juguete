@@ -47,29 +47,48 @@ public class Movement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
 
     {
-
         var otherObj = col.collider;
         var cgo = otherObj.gameObject;
         var player = col.otherCollider.gameObject;
-        if (otherObj.tag == "Sword" && getsword)
+
+
+        if (otherObj.tag == "Sword")
         {
-            getsword = false;
             Debug.Log("Collisding with" + col.collider.gameObject.name);
-            cgo.transform.parent = player.transform;
+            this.activar(cgo, player, "Sword");
+            
 
         } else if (otherObj.tag == "Helmet")
         {
             Debug.Log("Collisding with" + col.collider.gameObject.name);
-            cgo.transform.parent = player.transform;
-            Vector2 v2 = new Vector2(player.transform.position.x, player.transform.position.y);
-            cgo.transform.position = v2;
+            this.activar(cgo, player, "Helmet");
+           
+            
         } else if (otherObj.tag =="Ground")
         {
             cantj = 0;
 
+        }else if (otherObj.tag == "Shield")
+        {
+            this.activar(cgo, player, "Shield");
+
         }
 
     }
+
+    private void activar(GameObject cgo, GameObject player, string tag)
+    {
+        GameObject.Destroy(cgo);
+            for (int i=0; i<player.transform.childCount; i++)
+            {
+                Transform son = player.transform.GetChild(i);
+                if (son.tag==tag)
+                {
+                    son.gameObject.SetActive(true);
+                }
+            }
+    }
+
     /*
     void OnTriggerEnter(Collider otherObject)
 
