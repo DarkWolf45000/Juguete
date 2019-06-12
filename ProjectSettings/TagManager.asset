@@ -10,6 +10,7 @@ TagManager:
   - Sword
   - Helmet
   - Shield
+  - Danger
   layers:
   - Default
   - TransparentFX

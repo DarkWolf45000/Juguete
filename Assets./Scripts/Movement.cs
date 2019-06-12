@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     
     public float speed = 5f;
+    private Vector3 orposition;
     public Rigidbody2D rb;
     private int cantj = 0;
     private Transform pt;
@@ -14,6 +15,8 @@ public class Movement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         pt = gameObject.transform;
+        orposition = pt.position;
+
     }
 
     // Update is called once per frame
@@ -69,6 +72,10 @@ public class Movement : MonoBehaviour
         }else if (otherObj.tag == "Shield")
         {
             this.activar(cgo, player, "Shield");
+
+        }else if (otherObj.tag == "Danger")
+        {
+            player.transform.position = this.orposition;
 
         }
 
